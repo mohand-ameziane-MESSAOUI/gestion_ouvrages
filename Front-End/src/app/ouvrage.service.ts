@@ -40,6 +40,10 @@ export class OuvrageService {
   }
 
   editOuvrage(element: Ouvrage) {
+    return this.http.put<Ouvrage>(`/ouvrage/${element._id}`, element)
+  }
 
+  addOuvrage(element: Ouvrage) {
+    return this.http.post<Ouvrage>(`/ouvrage`, element)
   }
 }

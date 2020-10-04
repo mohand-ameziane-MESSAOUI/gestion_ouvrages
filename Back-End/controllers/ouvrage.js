@@ -92,13 +92,13 @@ exports.edit_ouvrage = async (req, res, next) => {
                 ouv.statut = req.body.statut
 
                 ouv
-                        .save()
-                        .then(data => {
-                            response(res, 200, true, "successful operation", data)
-                        })
-                        .catch(err => {
-                            response(res, 500, false, "error", err)
-                        })
+                    .save()
+                    .then(data => {
+                        response(res, 200, true, "successful operation", data)
+                    })
+                    .catch(err => {
+                        response(res, 500, false, "error", err)
+                    })
             })
             .catch(e => {
                 console.log(e);

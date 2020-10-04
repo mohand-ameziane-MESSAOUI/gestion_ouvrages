@@ -15,7 +15,6 @@ export class OuvragesComponent implements OnInit {
   status: String;
   dataSource: MatTableDataSource<Ouvrage>;
   displayedColumns: string[] = ['titre', 'auteur', 'genre', 'statut', 'modifier', 'supprimer', 'detail'];
-  selectedHero: Ouvrage;
 
   constructor(private ouvrageService: OuvrageService) { }
 
@@ -38,7 +37,6 @@ export class OuvragesComponent implements OnInit {
   }
 
   deleteOuvrage(element: Ouvrage) : void {
-    console.log("element._id", element._id);
     this.ouvrageService.deleteOuvrage(element._id)
       .subscribe(res =>  this.getOuvrages());
   }

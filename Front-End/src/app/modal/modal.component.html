@@ -1,38 +1,55 @@
 <ng-template #content let-c="close" let-d="dismiss">
   <div class="modal-header">
-    <h4 class="modal-title" id="modal-basic-title">Hi there!</h4>
+    <h4 class="modal-title" id="modal-basic-title">Ouvrages</h4>
     <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
       <span aria-hidden="true">&times;</span>
     </button>
   </div>
   <div class="modal-body" >
-    <div  *ngIf="action">
+    <div>
       <mat-form-field class="example-full-width">
         <mat-label>titre</mat-label>
-        <input matInput placeholder="genre" [(ngModel)]="ouvrage.titre">
+        <input matInput placeholder="titre" [(ngModel)]="ouvrage.titre">
       </mat-form-field>
-
       <mat-form-field class="example-full-width">
         <mat-label>genre</mat-label>
         <input matInput placeholder="genre" [(ngModel)]="ouvrage.genre">
       </mat-form-field>
-
       <mat-form-field class="example-full-width">
         <mat-label>status</mat-label>
         <input matInput placeholder="status" [(ngModel)]="ouvrage.statut">
       </mat-form-field>
+      <mat-form-field class="example-full-width">
+        <mat-label>ISBN</mat-label>
+        <input matInput placeholder="ISBN" [(ngModel)]="ouvrage.ISBN">
+      </mat-form-field>
+      <mat-form-field class="example-full-width">
+        <mat-label>auteur</mat-label>
+        <input matInput placeholder="auteur" [(ngModel)]="ouvrage.auteur">
+      </mat-form-field>
+      <mat-form-field class="example-full-width">
+        <mat-label>emplacementP</mat-label>
+        <input matInput placeholder="emplacementP" [(ngModel)]="ouvrage.emplacementP">
+      </mat-form-field>
+      <mat-form-field class="example-full-width">
+        <mat-label>maisonE</mat-label>
+        <input matInput placeholder="maisonE" [(ngModel)]="ouvrage.maisonE">
+      </mat-form-field>
 
     </div>
-    <div *ngIf="!action">
-      <label>{{ouvrage.titre}}</label>
-    </div>
+
   </div>
 
   <div class="modal-footer">
-    <button type="button" class="btn btn-outline-dark" (click)="c('Save click')">Save</button>
+    <button type="button" class="btn btn-outline-dark" (click)="c('Save click'); this.editOrAddOuvrage(ouvrage, addOuvrgae)">Save</button>
   </div>
 </ng-template>
 
-<button mat-icon-button color="warn" (click)="open(content)">
-  <mat-icon class="mat-18">delete</mat-icon>
+<button mat-icon-button color="warn" (click)="open(content)" *ngIf="boolAdd">
+  <mat-icon class="mat-18">{{iconAdd}}</mat-icon>
 </button>
+
+<button mat-icon-button color="warn" (click)="open(content)" *ngIf="boolEdit">
+  <mat-icon class="mat-18">{{iconEdit}}</mat-icon>
+</button>
+

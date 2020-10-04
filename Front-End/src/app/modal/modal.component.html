@@ -1,0 +1,38 @@
+<ng-template #content let-c="close" let-d="dismiss">
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">Hi there!</h4>
+    <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body" >
+    <div  *ngIf="action">
+      <mat-form-field class="example-full-width">
+        <mat-label>titre</mat-label>
+        <input matInput placeholder="genre" [(ngModel)]="ouvrage.titre">
+      </mat-form-field>
+
+      <mat-form-field class="example-full-width">
+        <mat-label>genre</mat-label>
+        <input matInput placeholder="genre" [(ngModel)]="ouvrage.genre">
+      </mat-form-field>
+
+      <mat-form-field class="example-full-width">
+        <mat-label>status</mat-label>
+        <input matInput placeholder="status" [(ngModel)]="ouvrage.statut">
+      </mat-form-field>
+
+    </div>
+    <div *ngIf="!action">
+      <label>{{ouvrage.titre}}</label>
+    </div>
+  </div>
+
+  <div class="modal-footer">
+    <button type="button" class="btn btn-outline-dark" (click)="c('Save click')">Save</button>
+  </div>
+</ng-template>
+
+<button mat-icon-button color="warn" (click)="open(content)">
+  <mat-icon class="mat-18">delete</mat-icon>
+</button>

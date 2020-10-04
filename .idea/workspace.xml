@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="578b18af-7c51-46a5-803c-76904b6ca0da" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/Front-End/proxy.conf.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Front-End/src/app/ouvrage.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Front-End/angular.json" beforeDir="false" afterPath="$PROJECT_DIR$/Front-End/angular.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Front-End/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/Front-End/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Front-End/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/Front-End/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Front-End/src/app/app-routing.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/Front-End/src/app/app-routing.module.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Front-End/src/app/app.component.css" beforeDir="false" afterPath="$PROJECT_DIR$/Front-End/src/app/app.component.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Front-End/src/app/app.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/Front-End/src/app/app.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Front-End/src/app/app.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/Front-End/src/app/app.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Front-End/src/app/app.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/Front-End/src/app/app.module.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Front-End/src/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/Front-End/src/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Front-End/src/styles.css" beforeDir="false" afterPath="$PROJECT_DIR$/Front-End/src/styles.css" afterDir="false" />
+    </list>
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/Front-End" />
+  </component>
+  <component name="ProjectId" id="1iKQKq1gahxWhwpkR6coUYiIWod" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="PropertiesComponent">
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../photo-sharing-site" />
+    <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.detected.package.tslint" value="true" />
+    <property name="node.js.path.for.package.eslint" value="project" />
+    <property name="node.js.path.for.package.tslint" value="project" />
+    <property name="node.js.selected.package.eslint" value="(autodetect)" />
+    <property name="node.js.selected.package.tslint" value="(autodetect)" />
+    <property name="nodejs_package_manager_path" value="npm" />
+    <property name="ts.external.directory.path" value="C:\Users\ADBI_101\Desktop\Projet UPEC\infodecision\Front-End\node_modules\typescript\lib" />
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="578b18af-7c51-46a5-803c-76904b6ca0da" name="Default Changelist" comment="" />
+      <created>1601653742664</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1601653742664</updated>
+      <workItem from="1601653744203" duration="41377000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+</project>

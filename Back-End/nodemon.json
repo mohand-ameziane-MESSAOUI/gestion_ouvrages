@@ -1,0 +1,15 @@
+{
+    "env": {
+        "MONGODB_USER": "",
+        "MONGODB_PASSWORD": "jWrBycTVQACSGEpb",
+        "MONGODB_PROTOCOL" : "mongodb",
+        "MONGODB_HOST": "localhost",
+        "MONGODB_PORT": "27017",
+        "MONGODB_DATA": "newbd",
+        "SWAGGER_BASE_URL": "localhost",
+        "SWAGGER_DOC_ROUTE": "/doc",
+        "JWT_KEY": "KEY",
+        "PORT": "3000",
+        "DEFAULT_PORFIL_IMAGE" : "uploads/default/profil.png"
+    }
+}

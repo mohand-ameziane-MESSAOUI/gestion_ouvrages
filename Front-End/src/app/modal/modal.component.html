@@ -5,51 +5,77 @@
       <span aria-hidden="true">&times;</span>
     </button>
   </div>
-  <div class="modal-body" >
+  <div class="modal-body" *ngIf="!isDetail">
     <div>
       <mat-form-field class="example-full-width">
-        <mat-label>titre</mat-label>
+        <mat-label>Titre</mat-label>
         <input matInput placeholder="titre" [(ngModel)]="ouvrage.titre">
       </mat-form-field>
       <mat-form-field class="example-full-width">
-        <mat-label>genre</mat-label>
+        <mat-label>Genre</mat-label>
         <input matInput placeholder="genre" [(ngModel)]="ouvrage.genre">
-      </mat-form-field>
-      <mat-form-field class="example-full-width">
-        <mat-label>status</mat-label>
-        <input matInput placeholder="status" [(ngModel)]="ouvrage.statut">
       </mat-form-field>
       <mat-form-field class="example-full-width">
         <mat-label>ISBN</mat-label>
         <input matInput placeholder="ISBN" [(ngModel)]="ouvrage.ISBN">
       </mat-form-field>
       <mat-form-field class="example-full-width">
-        <mat-label>auteur</mat-label>
+        <mat-label>Auteur</mat-label>
         <input matInput placeholder="auteur" [(ngModel)]="ouvrage.auteur">
       </mat-form-field>
       <mat-form-field class="example-full-width">
-        <mat-label>emplacementP</mat-label>
+        <mat-label>Emplacement physique</mat-label>
         <input matInput placeholder="emplacementP" [(ngModel)]="ouvrage.emplacementP">
       </mat-form-field>
       <mat-form-field class="example-full-width">
-        <mat-label>maisonE</mat-label>
+        <mat-label>Maison d’édition</mat-label>
         <input matInput placeholder="maisonE" [(ngModel)]="ouvrage.maisonE">
       </mat-form-field>
-
     </div>
+  </div>
 
+  <div class="modal-body" *ngIf="isDetail">
+    <div class="col">
+      <div class="row"> Titre :
+        <label>{{ouvrage.titre}}</label>
+      </div>
+      <div class="row"> Genre :
+        <label>{{ouvrage.genre}}</label>
+      </div>
+      <div class="row"> Statut :
+        <label>{{ouvrage.statut}}</label>
+      </div>
+      <div class="row"> ISBN :
+        <label>{{ouvrage.ISBN}}</label>
+      </div>
+      <div class="row"> Auteur :
+        <label>{{ouvrage.auteur}}</label>
+      </div>
+      <div class="row"> emplacement physique :
+        <label>{{ouvrage.emplacementP}}</label>
+      </div>
+      <div class="row"> Maison d’édition :
+        <label>{{ouvrage.maisonE}}</label>
+      </div>
+    </div>
   </div>
 
   <div class="modal-footer">
-    <button type="button" class="btn btn-outline-dark" (click)="c('Save click'); this.editOrAddOuvrage(ouvrage, addOuvrgae)">Save</button>
+    <button type="button" class="btn btn-outline-dark"
+            (click)="c('Save click'); this.editOrAddOuvrage(ouvrage, addOuvrgae)">Save
+    </button>
   </div>
 </ng-template>
 
-<button mat-icon-button color="warn" (click)="open(content)" *ngIf="boolAdd">
+<button mat-icon-button color="warn" (click)="open(content); this.setIsDetail(false)" *ngIf="boolAdd">
   <mat-icon class="mat-18">{{iconAdd}}</mat-icon>
 </button>
 
-<button mat-icon-button color="warn" (click)="open(content)" *ngIf="boolEdit">
+<button mat-icon-button color="warn" (click)="open(content); this.setIsDetail(false)" *ngIf="boolEdit">
   <mat-icon class="mat-18">{{iconEdit}}</mat-icon>
+</button>
+
+<button mat-icon-button color="warn" (click)="open(content); this.setIsDetail(true)" *ngIf="boolDetail">
+  <mat-icon class="mat-18">{{iconDetail}}</mat-icon>
 </button>
 

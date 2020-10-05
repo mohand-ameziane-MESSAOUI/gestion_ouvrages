@@ -1,24 +1,27 @@
-<h3 class="text-center">Ouvrage</h3>
+<h3 class="text-center">Ouvrages</h3>
 
-<div class="row justify-content-center mt-4" >
-    <div class="module mr-4">
-    <h4 (close)="getOuvrages()">prêter</h4>
+<div class="row justify-content-center mt-4">
+  <div class="module mr-4" (click)="this.setList(preter)">
+    <h4>Prêté(s)</h4>
+    <h4>{{this.ouvragePre}}</h4>
   </div>
 
-  <div class="module mr-4" >
-    <h4>local</h4>
+  <div class="module mr-4" (click)="this.setList(disponible)">
+    <h4 >Disponible</h4>
+    <h4>{{this.ouvrageDisp}}</h4>
   </div>
 
-  <div class="module">
-    <h4>tous</h4>
+  <div class="module mr-4" (click)="this.setList(tous)">
+    <h4>Tous</h4>
+    <h4>{{this.ouvrages.length}}</h4>
   </div>
 </div>
 
 
-
 <div class="mt-5">
-  <app-ouvrages>
+  <app-ouvrages [filter] = "filter">
+
   </app-ouvrages>
-  </div>
+</div>
 
 

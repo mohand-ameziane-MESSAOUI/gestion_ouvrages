@@ -1,7 +1,8 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {Ouvrage} from "../ouvrage";
 import {OuvrageService} from "../ouvrage.service";
 import {MatTableDataSource} from "@angular/material/table";
+import {DashboardComponent} from "../dashboard/dashboard.component";
 
 
 @Component({
@@ -12,11 +13,14 @@ import {MatTableDataSource} from "@angular/material/table";
 export class OuvragesComponent implements OnInit {
 
   ouvrages: Ouvrage[] = [];
-  status: String;
+  status: string;
   dataSource: MatTableDataSource<Ouvrage>;
-  displayedColumns: string[] = ['titre', 'auteur', 'genre', 'statut', 'modifier', 'supprimer', 'detail'];
+  displayedColumns: string[] = ['titre', 'auteur', 'genre', 'statut', 'changeStatut', 'modifier', 'supprimer', 'detail'];
 
-  constructor(private ouvrageService: OuvrageService) { }
+  @Input()
+  filter: string = "tous";
+
+  constructor(private ouvrageService: OuvrageService, private dashboardComponent: DashboardComponent) { }
 
   ngOnInit() {
     this.getOuvrages();
@@ -28,6 +32,7 @@ export class OuvragesComponent implements OnInit {
           this.ouvrages = res.data
           this.dataSource = new MatTableDataSource(this.ouvrages);
           console.log("this.ouvrages", this.ouvrages)
+          this.filterToStatut(this.filter)
         });
   }
 
@@ -41,9 +46,26 @@ export class OuvragesComponent implements OnInit {
       .subscribe(res =>  this.getOuvrages());
   }
 
+  changeStatut(element: Ouvrage): void{
+    this.ouvrageService.changeStatut(element)
+      .subscribe(res => {
+        this.getOuvrages();
+        this.dashboardComponent.getOuvrages();
+
+      });
+  }
+
   editOuvrage(element: Ouvrage) {
     this.ouvrageService.editOuvrage(element)
 
   }
 
+  private filterToStatut(filter: string) {
+    if(filter != "tous") {
+      console.log("this.ouvrages filterToStatut", this.ouvrages)
+      console.log("filterToStatut", filter)
+      this.ouvrages.filter(ouv =>{ouv.statut == filter})
+      console.log("this.ouvrages filterToStatut", this.ouvrages)
+    }
+  }
 }

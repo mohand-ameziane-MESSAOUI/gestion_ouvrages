@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {Ouvrage} from "../ouvrage";
 import {OuvrageService} from "../ouvrage.service";
+import {MatTableDataSource} from "@angular/material/table";
 
 @Component({
   selector: 'app-dashboard',
@@ -11,6 +12,29 @@ export class DashboardComponent implements OnInit {
 
   ouvrages: Ouvrage[] = [];
 
+  ouvrageDisp: number;
+
+  ouvragePre: number;
+  private dataSource: MatTableDataSource<Ouvrage>;
+
+  @Input()
+  pret: boolean = false;
+
+  @Input()
+  disp: boolean = false;
+
+  @Input()
+  preter: string = "preter";
+
+  @Input()
+  disponible: string = "disponible";
+
+  @Input()
+  tous: string = "tous";
+
+  @Input()
+  filter: string = "tous";
+
   constructor(private ouvrageService: OuvrageService) { };
 
   ngOnInit() {
@@ -19,8 +43,20 @@ export class DashboardComponent implements OnInit {
 
   getOuvrages(): void {
     this.ouvrageService.getOuvrages()
-      .subscribe(ouvrages => {this.ouvrages = JSON.parse(JSON.stringify(ouvrages)).data; console.log("ouvrages",JSON.parse(JSON.stringify(ouvrages)).data)});
-  }
+      .subscribe(res => {
+        this.ouvrages = res.data;
+        this.ouvrageDisp = this.ouvrages.filter(ouvr => {return ouvr.statut == "disponible"}).length;
+        this.ouvragePre = this.ouvrages.filter(ouvr => {return ouvr.statut == "preter"}).length;
+        this.dataSource = new MatTableDataSource(this.ouvrages)
 
+        })
+}
+
+
+
+ setList(statut: string):void {
+    console.log("statut",statut)
+    this.filter = statut
+}
 
 }

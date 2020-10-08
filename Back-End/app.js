@@ -3,6 +3,7 @@ const express = require('express');
 const app = express();
 const bodyParser = require('body-parser');
 const mongoose = require("mongoose");
+const morgan = require('morgan');
 
 /* import routes */
 const ouvragesRoutes = require("./routes/ouvrage");
@@ -26,9 +27,14 @@ app.use(bodyParser.urlencoded({
 app.use(bodyParser.json());
 
 
-/* filter routes*/
-app.use('/api/ouvrage', ouvragesRoutes); // url : /ouvrages-list
+/* use morgan*/
+app.use(morgan("dev"));
 
+/* allow access to /uploads route */
+app.use('/uploads', express.static("uploads"))
+
+
+app.use('/api/ouvrage', ouvragesRoutes); // url : /ouvrages-list
 
 /* catch unfound routes */
 app.use((req, res, next) => {

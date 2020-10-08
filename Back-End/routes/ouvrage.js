@@ -10,11 +10,13 @@ const upload = require("../configurations/uploadImage");
 
 /**
  *
- * ouvrage controller 
+ * ouvrage controller
  */
 const ouvrageController = require("../controllers/ouvrage");
 
-router.post("/", ouvrageController.create_ouvrage);
+router.post("/", upload.single("photo"), ouvrageController.create_ouvrage);
+
+
 
 router.get('/', ouvrageController.get_all_ouvrage);
 

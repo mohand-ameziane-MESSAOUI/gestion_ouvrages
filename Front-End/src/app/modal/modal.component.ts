@@ -1,9 +1,10 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, Inject, Input, OnInit} from '@angular/core';
 import {NgbModalConfig, NgbModal} from '@ng-bootstrap/ng-bootstrap';
 import {Ouvrage} from "../ouvrage";
 import {OuvrageService} from "../ouvrage.service";
-import {OuvragesComponent} from "../ouvrages/ouvrages.component";
+import {OuvragesListComponent} from "../ouvrages-list/ouvrages-list.component";
 import {DashboardComponent} from "../dashboard/dashboard.component";
+import {MAT_DIALOG_DATA, MatDialogRef} from "@angular/material/dialog";
 
 @Component({
   selector: 'app-modal',
@@ -11,35 +12,11 @@ import {DashboardComponent} from "../dashboard/dashboard.component";
   styleUrls: ['./modal.component.css'],
   providers: [NgbModalConfig, NgbModal]
 })
-export class ModalComponent implements OnInit {
-  @Input()
-  addOuvrgae: boolean;
+export class ModalComponent {
 
   @Input()
-  isDetail: boolean = true;
-
-  @Input()
-  boolAdd: boolean;
-
-  @Input()
-  boolEdit: boolean;
-
-  @Input()
-  boolDetail: boolean;
-
-  @Input()
-  iconAdd: string = "add";
-
-  @Input()
-  iconEdit: string = "create";
-
-  @Input()
-  iconDetail: string = "reorder";
-
-  @Input()
-  ouvrage: Ouvrage = {
+  newOuvrage: Ouvrage = {
     ISBN: "",
-    _id: 0,
     auteur: "",
     emplacementP: "",
     genre: "",
@@ -48,38 +25,22 @@ export class ModalComponent implements OnInit {
     statut: "disponible",
     titre: "",
   };
-
-  constructor(config: NgbModalConfig, private modalService: NgbModal, private ouvrageService: OuvrageService, private ouvrageComponent: OuvragesComponent, private dashboardComponent: DashboardComponent) {
+  //constructor(config: NgbModalConfig, private modalService: NgbModal, private ouvrageService: OuvrageService, private ouvrageComponent: OuvragesListComponent, private dashboardComponent: DashboardComponent) {
     // customize default values of modals used by this component tree
-    config.backdrop = 'static';
-    config.keyboard = false;
+  constructor(@Inject(MAT_DIALOG_DATA) public data: any,
+              private ouvrageService: OuvrageService,  public dialogRef: MatDialogRef<ModalComponent>) {}
+
+  saveAdd(): void{
+    console.log("this.newOuvrage",this.newOuvrage);
+    this.ouvrageService.addOuvrage(this.newOuvrage).subscribe();
+    this.dialogRef.close(true);
+}
+
+  saveEdit(): void{
+    console.log("this.data",this.data)
+    this.ouvrageService.editOuvrage(this.data).subscribe( x => {})
+    this.dialogRef.close(true);
   }
 
-  open(content) {
-    console.log("this.ouvrage", this.ouvrage)
-    this.modalService.open(content);
-  }
-
-  ngOnInit(): void {
-  }
-
-  editOrAddOuvrage(element: Ouvrage, addOuvrgae: boolean): void {
-    console.log("editOrAddOuvrage", element)
-    if (addOuvrgae) {
-      this.ouvrageService.addOuvrage(element)
-        .subscribe(res => {
-          this.ouvrageComponent.getOuvrages();
-          this.dashboardComponent.getOuvrages()
-
-        });
-    } else {
-      this.ouvrageService.editOuvrage(element)
-        .subscribe(res => this.ouvrageComponent.getOuvrages());
-    }
-  }
-
-  setIsDetail(bool: boolean) {
-    this.isDetail = bool
-  }
 }
 

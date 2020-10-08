@@ -1,11 +1,6 @@
 import { NgModule } from '@angular/core';
 
 import { LayoutModule } from '@angular/cdk/layout';
-
-//
-// Form Controls
-//
-
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatDatepickerModule } from '@angular/material/datepicker';
@@ -16,6 +11,7 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatSliderModule } from '@angular/material/slider';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import {MatTableModule} from '@angular/material/table';
+import {MatDialogModule} from '@angular/material/dialog';
 
 const MaterialComponent: any[] = [
 
@@ -30,7 +26,8 @@ const MaterialComponent: any[] = [
   MatSelectModule,
   MatSliderModule,
   MatSlideToggleModule,
-  MatTableModule
+  MatTableModule,
+  MatDialogModule
 
 
 

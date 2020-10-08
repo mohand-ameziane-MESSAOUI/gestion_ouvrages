@@ -30,8 +30,8 @@
       <ng-container matColumnDef="changeStatut">
         <th mat-header-cell *matHeaderCellDef> Change Statut</th>
         <td mat-cell *matCellDef="let element">
-          <button mat-icon-button color="warn" (click)="changeStatut(element)">
-            <mat-icon class="mat-18">delete</mat-icon>
+          <button mat-icon-button (click)="changeStatut(element)">
+            <mat-icon class="mat-18" >flip_camera_android</mat-icon>
           </button>
         </td>
       </ng-container>
@@ -39,14 +39,18 @@
       <ng-container matColumnDef="detail">
         <th mat-header-cell *matHeaderCellDef>Detail</th>
         <td mat-cell *matCellDef="let element">
-          <app-modal [ouvrage]="element"  [boolDetail]="true"></app-modal>
+          <button mat-icon-button color="accent" (click)="detailOuvrage(element)">
+            <mat-icon class="mat-18">menu</mat-icon>
+          </button>
         </td>
       </ng-container>
 
       <ng-container matColumnDef="modifier">
         <th mat-header-cell *matHeaderCellDef> Modifier</th>
         <td mat-cell *matCellDef="let element">
-          <app-modal [ouvrage]="element" [addOuvrgae]="false" [boolEdit]="true"></app-modal>
+          <button mat-icon-button (click)="editOuvrage(element)">
+            <mat-icon class="mat-18">edit</mat-icon>
+          </button>
         </td>
       </ng-container>
 
@@ -62,16 +66,12 @@
       <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
       <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
 
-      <!-- Row shown when there is no matching data. -->
       <tr class="mat-row" *matNoDataRow>
         <td class="mat-cell" colspan="4">No data matching the filter "{{input.value}}"</td>
       </tr>
     </table>
 
 
-  </div>
-  <div style="width: 10%; height: 10%; margin-top: 60px">
-    <app-modal [addOuvrgae]="true" [boolAdd]="true"></app-modal>
   </div>
 
 </div>

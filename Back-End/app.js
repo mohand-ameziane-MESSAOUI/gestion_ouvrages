@@ -27,7 +27,7 @@ app.use(bodyParser.json());
 
 
 /* filter routes*/
-app.use('/api/ouvrage', ouvragesRoutes); // url : /ouvrages
+app.use('/api/ouvrage', ouvragesRoutes); // url : /ouvrages-list
 
 
 /* catch unfound routes */

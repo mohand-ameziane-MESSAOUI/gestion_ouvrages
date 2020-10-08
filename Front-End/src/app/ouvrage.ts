@@ -1,5 +1,5 @@
 export interface Ouvrage {
-  _id: number;
+  _id?: number;
   titre: string;
   auteur: string;
   ISBN: string;

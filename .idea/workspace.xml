@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="578b18af-7c51-46a5-803c-76904b6ca0da" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/images/diagrame-application.PNG" beforeDir="false" afterPath="$PROJECT_DIR$/images/diagrame.PNG" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/specification-fonctionnelle.markdown" beforeDir="false" afterPath="$PROJECT_DIR$/specification-fonctionnelle.markdown" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -55,7 +55,7 @@
       <workItem from="1601885852058" duration="1210000" />
       <workItem from="1601921511214" duration="9061000" />
       <workItem from="1601977451833" duration="193000" />
-      <workItem from="1602151715125" duration="2106000" />
+      <workItem from="1602151715125" duration="2243000" />
     </task>
     <servers />
   </component>

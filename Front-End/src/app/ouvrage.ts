@@ -3,7 +3,7 @@ export interface Ouvrage {
   titre: string;
   auteur: string;
   ISBN: string;
-  photo: string;
+  photo: any;
   maisonE: string;
   emplacementP: string;
   genre: string;

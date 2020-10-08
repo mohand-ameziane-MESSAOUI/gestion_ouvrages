@@ -1,44 +1,59 @@
-<h3 class="text-center">Ouvrages</h3>
 
-<div class="row justify-content-center mt-4">
-  <div class="module mr-4" (click)="this.setList(preter)">
-    <h4>Prêté(s)</h4>
-    <h4>{{this.ouvragePre}}</h4>
+    <h3 class="text-center">Ouvrages</h3>
+
+    <div class="row justify-content-center mt-4">
+      <div class="module mr-4" (click)="this.setList(preter)">
+        <h4>Prêté(s)</h4>
+        <h4>{{this.ouvragePre}}</h4>
+      </div>
+
+      <div class="module mr-4" (click)="this.setList(disponible)">
+        <h4>Disponible</h4>
+        <h4>{{this.ouvrageDisp}}</h4>
+      </div>
+
+      <div class="module " (click)="this.setList(tous)">
+        <h4>Tous</h4>
+        <h4>{{this.ouvrages.length}}</h4>
+      </div>
+    </div>
+
+<div class="row justify-content-center">
+  <div class="col-11 col-md-7">
+    <app-ouvrage-form
+      (filterOuvrage)="filterFormOuvrage($event)"
+    >
+
+    </app-ouvrage-form>
   </div>
 
-  <div class="module mr-4" (click)="this.setList(disponible)">
-    <h4>Disponible</h4>
-    <h4>{{this.ouvrageDisp}}</h4>
-  </div>
-
-  <div class="module mr-4" (click)="this.setList(tous)">
-    <h4>Tous</h4>
-    <h4>{{this.ouvrages.length}}</h4>
-  </div>
 </div>
 
 
-<div class="mt-5">
-  <div class="row">
-    <div class="col-11">
-      <app-ouvrages
-        [dataSource]="dataSource"
-        (deleteItemOuvrage)="deleteOuvrage($event)"
-        (detailItemOuvrage)="detailOuvrage($event)"
-        (editItemOuvrage)="editOuvrage($event)"
-        (changeItemStatut)="changeStatut($event)"
-      >
-      </app-ouvrages>
-    </div>
-    <div class="example-button-container" style="margin-top: 60px; margin-left: -90px;">
-      <button mat-fab color="success" style="background-color: #3AAF2E" (click)="addOuvrage()">
+  <div class="mt-1 row">
+
+      <div class="col-12 order-2 order-lg-1 col-lg-10">
+        <app-ouvrages
+          [dataSource]="dataSource"
+          (deleteItemOuvrage)="deleteOuvrage($event)"
+          (detailItemOuvrage)="detailOuvrage($event)"
+          (editItemOuvrage)="editOuvrage($event)"
+          (changeItemStatut)="changeStatut($event)"
+        >
+        </app-ouvrages>
+
+      </div>
+    <div class="col-12 order-1 order-lg-2  col-lg-1 mt-5">
+      <button class="blocadd"  mat-fab color="success" style="background-color: #3AAF2E" (click)="addOuvrage()">
         <mat-icon class="mat-18">add</mat-icon>
       </button>
     </div>
+
+
+
+
   </div>
 
 
-
-</div>
 
 

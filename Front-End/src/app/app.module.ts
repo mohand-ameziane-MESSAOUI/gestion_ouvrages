@@ -13,13 +13,17 @@ import {ModalComponent} from './modal/modal.component';
 import {MatIconModule} from "@angular/material/icon";
 import {MatInputModule} from '@angular/material/input';
 import {MatButtonModule} from '@angular/material/button';
+import { ReactiveFormsModule } from '@angular/forms';
+import { OuvrageFormComponent } from './ouvrage-form/ouvrage-form.component';
+import {MatExpansionModule} from '@angular/material/expansion';
 
 @NgModule({
   declarations: [
     AppComponent,
     OuvragesListComponent,
     DashboardComponent,
-    ModalComponent
+    ModalComponent,
+    OuvrageFormComponent
   ],
   imports: [
     BrowserModule,
@@ -30,7 +34,9 @@ import {MatButtonModule} from '@angular/material/button';
     FormsModule,
     MatIconModule,
     MatInputModule,
-    MatButtonModule
+    MatButtonModule,
+    ReactiveFormsModule,
+    MatExpansionModule
   ],
   providers: [],
   bootstrap: [AppComponent]

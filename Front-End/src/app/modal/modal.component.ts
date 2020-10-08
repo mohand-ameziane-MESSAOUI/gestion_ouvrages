@@ -1,4 +1,4 @@
-import {Component, Inject, Input, OnInit} from '@angular/core';
+import {Component, ElementRef, Inject, Input, OnInit, ViewChild} from '@angular/core';
 import {NgbModalConfig, NgbModal} from '@ng-bootstrap/ng-bootstrap';
 import {Ouvrage} from "../ouvrage";
 import {OuvrageService} from "../ouvrage.service";
@@ -25,8 +25,13 @@ export class ModalComponent {
     statut: "disponible",
     titre: "",
   };
-  //constructor(config: NgbModalConfig, private modalService: NgbModal, private ouvrageService: OuvrageService, private ouvrageComponent: OuvragesListComponent, private dashboardComponent: DashboardComponent) {
-    // customize default values of modals used by this component tree
+  /*########################## File Upload ########################*/
+  @ViewChild('fileInput') el: ElementRef;
+  imageUrl: any = 'https://i.pinimg.com/236x/d6/27/d9/d627d9cda385317de4812a4f7bd922e9--man--iron-man.jpg';
+  editFile: boolean = true;
+  removeUpload: boolean = false;
+
+
   constructor(@Inject(MAT_DIALOG_DATA) public data: any,
               private ouvrageService: OuvrageService,  public dialogRef: MatDialogRef<ModalComponent>) {}
 
@@ -42,5 +47,20 @@ export class ModalComponent {
     this.dialogRef.close(true);
   }
 
+  uploadFile(event) {
+    let reader = new FileReader(); // HTML5 FileReader API
+    let file = event.target.files[0];
+    if (event.target.files && event.target.files[0]) {
+      reader.readAsDataURL(file);
+
+      // When file uploads set it to file formcontrol
+      reader.onload = () => {
+        this.imageUrl = reader.result;
+        this.newOuvrage.photo = reader.result
+        this.editFile = false;
+        this.removeUpload = true;
+      }
+    }
+  }
 }
 

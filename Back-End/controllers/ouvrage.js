@@ -11,8 +11,7 @@ exports.create_ouvrage = (req, res, next) => {
                 titre: req.body.titre,
                 auteur: req.body.auteur,
                 ISBN: req.body.ISBN,
-
-                photo: "",
+                photo: "filePath",
                 maisonE: req.body.maisonE,
                 emplacementP: req.body.emplacementP,
                 genre: req.body.genre,
@@ -40,27 +39,39 @@ exports.create_ouvrage = (req, res, next) => {
         }
 
 
-exports.delets_ouvrage = (req, res, next) => {
+exports.delete_ouvrage = (req, res, next) => {
 
-        ouvrage.remove({
+        ouvrage.deleteOne({
                 _id: req.params.id
             })
-            .exec()
             .then(result => {
                 response(res, 200, true, "Done ! has been deleted")
             })
             .catch(err => {
-                response(res, 404, false, "ouvrage not found ", err)
+                response(res, 400, false, "ouvrage not found ", err)
             })
 
 }
 
 
-
 exports.get_all_ouvrage = async (req, res, next) => {
-    let ouvrages = await ouvrage.find().catch(err => response(res, 500, false, "error", err));
-    (ouvrages.length === 0) ?
-    response(res, 404, false, "Zero ouvrage find"): response(res, 200, true, "successful operation", ouvrages)
+    if (req.query) {
+        var query = {}
+        if (req.query.titre) { query.titre = { $regex: req.query.titre } }
+        if (req.query.auteur) { query.auteur = { $regex: req.query.auteur } }
+        if (req.query.genre) { query.genre = { $regex: req.query.genre } }
+        if (req.query.statut) { query.statut = { $regex: req.query.statut } }
+  }
+     ouvrage.find(query)
+        .then(result =>    res.status(200).json({
+            success: true,
+            message: "successful operation",
+            data: result
+        }))
+        .catch(err =>  res.status(500).json({
+            success: false,
+            message: "error",
+        }))
 }
 
 exports.get_ouvrage_by_id = async (req, res, next) => {

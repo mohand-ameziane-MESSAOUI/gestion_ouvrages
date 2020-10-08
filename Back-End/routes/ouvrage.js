@@ -5,7 +5,8 @@ const router = express.Router();
 /**
  * Upload middleware
  */
-const upload = require("../configurations/ouvrage")
+const upload = require("../configurations/uploadImage");
+
 
 /**
  *
@@ -13,14 +14,14 @@ const upload = require("../configurations/ouvrage")
  */
 const ouvrageController = require("../controllers/ouvrage");
 
-router.post("/",ouvrageController.create_ouvrage);
+router.post("/", ouvrageController.create_ouvrage);
 
-router.get('/', ouvrageController.get_all_ouvrage)
+router.get('/', ouvrageController.get_all_ouvrage);
 
-router.get('/:id', ouvrageController.get_ouvrage_by_id)
+router.get('/:id', ouvrageController.get_ouvrage_by_id);
 
 router.put('/:id', ouvrageController.edit_ouvrage);
 
-router.delete("/:id", ouvrageController.delets_ouvrage);
+router.delete("/:id", ouvrageController.delete_ouvrage);
 
 module.exports = router;

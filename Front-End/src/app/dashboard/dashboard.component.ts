@@ -29,6 +29,13 @@ export class DashboardComponent implements OnInit {
   @Input()
   tous: string = "tous";
 
+
+    auteur = "";
+    genre = "";
+    statut = "";
+    titre = "";
+
+
   constructor(private ouvrageService: OuvrageService, public dialog: MatDialog) { };
 
   ngOnInit() {
@@ -41,7 +48,7 @@ export class DashboardComponent implements OnInit {
 }
 
   getOuvrages(): void {
-    this.ouvrageService.getOuvrages()
+    this.ouvrageService.getOuvrages(this.titre, this.auteur, this.genre, this.statut)
       .subscribe(res => {
         this.ouvrageDisp = res.data.filter(ouvrage => ouvrage.statut == "disponible").length;
         this.ouvragePre = res.data.filter(ouvrage => ouvrage.statut == "Prêté").length;
@@ -95,6 +102,7 @@ export class DashboardComponent implements OnInit {
 
   addOuvrage() {
     const dialogRef = this.dialog.open(ModalComponent, {
+
       data: {
         type: "add"
       }
@@ -107,10 +115,10 @@ export class DashboardComponent implements OnInit {
   }
   private filterToStatut(filter: string) {
     if(filter != "tous") {
-      console.log("this.ouvrages-list filterToStatut", this.ouvrages)
-      console.log("filterToStatut", filter)
-      this.ouvrages.filter(ouv =>{ouv.statut == filter})
-      console.log("this.ouvrages-list filterToStatut", this.ouvrages)
+      console.log("this.ouvrages-list filterToStatut", this.ouvrages);
+      console.log("filterToStatut", filter);
+      this.ouvrages.filter(ouv =>{ouv.statut == filter});
+      console.log("this.ouvrages-list filterToStatut", this.ouvrages);
     }
   }
 
@@ -123,4 +131,18 @@ export class DashboardComponent implements OnInit {
     });
   }
 
+  filterFormOuvrage($event: any) {
+    this.ouvrageService.getOuvrages($event.titre, $event.auteur, $event.genre, $event.statut)
+      .subscribe(res => {
+        this.ouvrageDisp = res.data.filter(ouvrage => ouvrage.statut == "disponible").length;
+        this.ouvragePre = res.data.filter(ouvrage => ouvrage.statut == "Prêté").length;
+
+        if(this.status != "tous"){
+          this.ouvrages = res.data.filter(ouvrage => ouvrage.statut == this.status);
+        }else{
+          this.ouvrages = res.data;
+        }
+        this.dataSource = new MatTableDataSource(this.ouvrages);
+      });
+  }
 }

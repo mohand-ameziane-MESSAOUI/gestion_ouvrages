@@ -17,8 +17,12 @@ export class OuvrageService {
 
   listOuvrage: Ouvrage[];
 
-  getOuvrages(): Observable<OuvrageRespense> {
-    return this.http.get<OuvrageRespense>('/api/ouvrage', this.httpOptions);
+  getOuvrages(titre: string, auteur: string, genre: string, statut: string): Observable<OuvrageRespense> {
+    if(titre === null) {titre = '' }
+    if(auteur === null) {auteur = '' }
+    if(genre === null) {genre = '' }
+    if(statut === null) {statut = '' }
+    return this.http.get<OuvrageRespense>(`/api/ouvrage?titre=${titre}&genre=${genre}&auteur=${auteur}&statut=${statut}`, this.httpOptions);
   }
 
   deleteOuvrage(_id: number) {
@@ -30,7 +34,7 @@ export class OuvrageService {
     return this.http.put<Ouvrage>(`/api/ouvrage/${element._id}`, element);
   }
 
-  addOuvrage(element: Ouvrage) {
+  addOuvrage(element: Ouvrage, ) {
     return this.http.post<Ouvrage>(`/api/ouvrage`, element);
   }
 

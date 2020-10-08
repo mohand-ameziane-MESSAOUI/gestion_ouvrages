@@ -1,0 +1,51 @@
+<!-- card search -->
+<div class=" my-4">
+  <mat-accordion>
+    <mat-expansion-panel class="my-4">
+      <mat-expansion-panel-header class="search">
+        <mat-panel-title>
+          <div class="row ml-2 ">
+            <div>
+              <mat-icon class=" mx-2" aria-hidden="false" aria-label="Example home icon">group</mat-icon>
+            </div>
+            <div>
+              <p class="">Rechercher des Ouvrages</p>
+            </div>
+          </div>
+        </mat-panel-title>
+      </mat-expansion-panel-header>
+      <form [formGroup]="form" (ngSubmit)="filterOuvrages()">
+        <div class="row">
+
+
+          <mat-form-field class="col-md-4">
+            <mat-label>Titre :</mat-label>
+            <input matInput formControlName="titre">
+          </mat-form-field>
+
+          <mat-form-field class="col-md-4">
+            <mat-label>Genre :</mat-label>
+            <input matInput formControlName="genre">
+          </mat-form-field>
+
+          <mat-form-field class="col-md-4">
+            <mat-label>statut :</mat-label>
+            <input matInput formControlName="statut">
+          </mat-form-field>
+        </div>
+        <div class="row">
+
+          <mat-form-field class="col-md-4">
+            <mat-label>Auteur:</mat-label>
+            <input matInput name="email" formControlName="auteur">
+          </mat-form-field>
+
+        </div>
+        <div class="row justify-content-center">
+          <button mat-raised-button color="primary" class="mr-3 color-theme" type="submit">Rechercher</button>
+          <button mat-raised-button color="primary" class="color-theme" (click)="reset()">Effacer</button>
+        </div>
+      </form>
+    </mat-expansion-panel>
+  </mat-accordion>
+</div>

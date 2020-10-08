@@ -3,7 +3,11 @@
   <component name="ChangeListManager">
     <list default="true" id="578b18af-7c51-46a5-803c-76904b6ca0da" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Back-End/.env" beforeDir="false" afterPath="$PROJECT_DIR$/Back-End/.env" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Back-End/configurations/ouvrage.js" beforeDir="false" afterPath="$PROJECT_DIR$/Back-End/configurations/uploadImage.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Back-End/controllers/ouvrage.js" beforeDir="false" afterPath="$PROJECT_DIR$/Back-End/controllers/ouvrage.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Back-End/models/ouvrage.js" beforeDir="false" afterPath="$PROJECT_DIR$/Back-End/models/ouvrage.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Back-End/routes/ouvrage.js" beforeDir="false" afterPath="$PROJECT_DIR$/Back-End/routes/ouvrage.js" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -18,7 +22,7 @@
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../photo-sharing-site" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -55,7 +59,7 @@
       <workItem from="1601885852058" duration="1210000" />
       <workItem from="1601921511214" duration="9061000" />
       <workItem from="1601977451833" duration="193000" />
-      <workItem from="1602151715125" duration="2894000" />
+      <workItem from="1602151715125" duration="4468000" />
     </task>
     <servers />
   </component>

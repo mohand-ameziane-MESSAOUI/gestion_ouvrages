@@ -40,7 +40,10 @@
           (changeItemStatut)="changeStatut($event)"
         >
         </app-ouvrages>
-
+        <mat-paginator [length]="100"
+                       [pageSize]="10"
+                       [pageSizeOptions]="[5, 10, 25, 100]">
+        </mat-paginator>
       </div>
     <div class="col-12 order-1 order-lg-2  col-lg-1 mt-5">
       <button class="blocadd"  mat-fab color="success" style="background-color: #3AAF2E" (click)="addOuvrage()">

@@ -1,28 +1,36 @@
 <div *ngIf="data.type === 'detail' ">
   <h1 mat-dialog-title>Detail ouvrages</h1>
+    <img style="max-height: 300px; max-width: 400px; " src="{{data.ouvrage.photo}}"/>
   <div mat-dialog-content>
     <div>
       <div class="col">
-        <div class="row" style="text-space: 10px" > Titre :
-          <label>{{data.ouvrage.titre}}</label>
+        <div class="row" >
+          <label style="font-size:140%; margin-right: 10px">Titre :</label>
+          <label style="font-size:120%;"> {{data.ouvrage.titre}}</label>
         </div>
-        <div class="row"> Genre
-          <label>: {{data.ouvrage.genre}}</label>
+        <div class="row">
+          <label style="font-size:140%; margin-right: 10px">Genre :</label>
+          <label style="font-size:120%;">{{data.ouvrage.genre}}</label>
         </div>
-        <div class="row"> Statut
-          <label>: {{data.ouvrage.statut}}</label>
+        <div class="row">
+          <label style="font-size:140%; margin-right: 10px">Statut :</label>
+          <label style="font-size:120%;">{{data.ouvrage.statut}}</label>
         </div>
-        <div class="row"> ISBN
-          <label>: {{data.ouvrage.ISBN}}</label>
+        <div class="row">
+          <label style="font-size:140%; margin-right: 10px">ISBN :</label>
+          <label style="font-size:120%;">{{data.ouvrage.ISBN}}</label>
         </div>
-        <div class="row"> Auteur
-          <label>: {{data.ouvrage.auteur}}</label>
+        <div class="row">
+          <label style="font-size:140%; margin-right: 10px">Auteur :</label>
+          <label style="font-size:120%;">{{data.ouvrage.auteur}}</label>
         </div>
-        <div class="row"> emplacement physique
-          <label>: {{data.ouvrage.emplacementPhysique}}</label>
+        <div class="row">
+          <label style="font-size:140%; margin-right: 10px">Emplacement physique :</label>
+          <label style="font-size:120%;">{{data.ouvrage.emplacementPhysique}}</label>
         </div>
-        <div class="row"> Maison d’édition
-          <label>: {{data.ouvrage.maisonEdition}}</label>
+        <div class="row">
+          <label style="font-size:140%; margin-right: 10px">Maison d’édition :</label>
+          <label style="font-size:120%;">{{data.ouvrage.maisonEdition}}</label>
         </div>
       </div>
     </div>
@@ -35,27 +43,27 @@
     <div>
       <mat-form-field class="example-full-width">
         <mat-label>Titre</mat-label>
-        <input matInput placeholder="titre" [(ngModel)]="newOuvrage.titre">
+        <input required matInput placeholder="titre" [(ngModel)]="newOuvrage.titre">
       </mat-form-field>
       <mat-form-field class="example-full-width">
         <mat-label>Genre</mat-label>
-        <input matInput placeholder="genre" [(ngModel)]="newOuvrage.genre">
+        <input required matInput placeholder="genre" [(ngModel)]="newOuvrage.genre">
       </mat-form-field>
       <mat-form-field class="example-full-width">
         <mat-label>ISBN</mat-label>
-        <input matInput placeholder="ISBN" [(ngModel)]="newOuvrage.ISBN">
+        <input required matInput placeholder="ISBN" [(ngModel)]="newOuvrage.ISBN">
       </mat-form-field>
       <mat-form-field class="example-full-width">
         <mat-label>Auteur</mat-label>
-        <input matInput placeholder="auteur" [(ngModel)]="newOuvrage.auteur">
+        <input required matInput placeholder="auteur" [(ngModel)]="newOuvrage.auteur">
       </mat-form-field>
       <mat-form-field class="example-full-width">
         <mat-label>Emplacement physique</mat-label>
-        <input matInput placeholder="emplacementPhysique" [(ngModel)]="newOuvrage.emplacementPhysique">
+        <input required matInput placeholder="emplacementP" [(ngModel)]="newOuvrage.emplacementPhysique">
       </mat-form-field>
       <mat-form-field class="example-full-width">
         <mat-label>Maison d’édition</mat-label>
-        <input matInput placeholder="maisonEdition" [(ngModel)]="newOuvrage.maisonEdition">
+        <input required matInput placeholder="maisonEdition" [(ngModel)]="newOuvrage.maisonEdition">
       </mat-form-field>
     </div>
     <div class="avatar-upload">
@@ -68,7 +76,7 @@
       <!--          </div>-->
     </div>
     <div mat-dialog-actions>
-      <button mat-button (click)="saveAdd()">Save</button>
+      <button mat-button (click)="saveAdd(newOuvrage)">Save</button>
     </div>
   </div>
 </div>
@@ -95,7 +103,7 @@
       </mat-form-field>
       <mat-form-field class="example-full-width">
         <mat-label>Emplacement physique</mat-label>
-        <input matInput placeholder="emplacementPhysique" [(ngModel)]="data.ouvrage.emplacementPhysique">
+        <input matInput placeholder="emplacementP" [(ngModel)]="data.ouvrage.emplacementPhysique">
       </mat-form-field>
       <mat-form-field class="example-full-width">
         <mat-label>Maison d’édition</mat-label>

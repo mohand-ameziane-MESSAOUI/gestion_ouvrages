@@ -1,15 +1,17 @@
 const multer = require("multer");
-const path = require('path')
+const path = require('path');
 
-const config_storasg = multer.diskStorage({
-  destination: function (req, file, cb) {
-    cb(null, path.join(__dirname, '/uploads/images'))
-  },
-  filename: function (req, file, cb) {
-    cb(null, new Date().toISOString() + file.originalname)
-  }
-});
+// const config_storasg = multer.diskStorage({
+//   destination: function (req, file, cb) {
+//     cb(null, path.join(__dirname, '/uploads/images'))
+//   },
+//   filename: function (req, file, cb) {
+//     cb(null, new Date().toISOString() + file.originalname)
+//   }
+// });
+
 const filerFilter = (req, file, cb) => {
+  console.log('fillter');
   if (file.mimetype === "image/jpeg" | file.mimetype === "image/png") {
     cb(null, true);
   } else {
@@ -18,8 +20,12 @@ const filerFilter = (req, file, cb) => {
 }
 
 const config_storag = multer.diskStorage({
-    filename: function (req, file, cb) {
-        cb(null,  file.originalname + "-" + Date.now() + path.extname(file.originalname));
+    destination: function (req, file, cb) {
+      cb(null, './uploads/images');
+  },
+
+filename: function (req, file, cb) {
+        cb(null,  new Date().getTime() + '-' + file.originalname);
     }
 });
 

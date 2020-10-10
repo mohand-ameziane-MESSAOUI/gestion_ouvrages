@@ -15,15 +15,15 @@ export class DashboardComponent implements OnInit {
   ouvrages: Ouvrage[] = [];
   ouvragesDisponible: number;
   ouvragesPreter: number;
-  status: string = 'all';
+  status = 'all';
   dataSource: MatTableDataSource<Ouvrage>;
 
   @Input()
-  preter: string = 'Prêté';
+  preter = 'Prêté';
   @Input()
-  disponible: string = 'disponible';
+  disponible = 'disponible';
   @Input()
-  all: string = 'all';
+  all = 'all';
 
   auteur = '';
   genre = '';
@@ -31,14 +31,16 @@ export class DashboardComponent implements OnInit {
   titre = '';
 
   constructor(private ouvrageService: OuvrageService, public dialog: MatDialog) {
-  };
+  }
 
   ngOnInit() {
     this.getOuvrages();
   }
 
   setList(statut: string): void {
-    if(statut != "all"){
+    if (statut == 'all'){
+      this.statut = '';
+    }else{
       this.statut = statut;
     }
     this.getOuvrages();
@@ -47,14 +49,14 @@ export class DashboardComponent implements OnInit {
   getOuvrages(): void {
     this.ouvrageService.getOuvrages(this.titre, this.auteur, this.genre, this.statut)
       .subscribe(res => {
-        this.ouvragesDisponible= res.data.filter(ouvrage => ouvrage.statut == 'disponible').length;
+        this.ouvragesDisponible = res.data.filter(ouvrage => ouvrage.statut == 'disponible').length;
         this.ouvragesPreter = res.data.filter(ouvrage => ouvrage.statut == 'Prêté').length;
 
        // if (this.status != 'all') {
          // this.ouvrages = res.data.filter(ouvrage => ouvrage.statut == this.status);
-        //} else {
-          this.ouvrages = res.data;
-        //}
+        // } else {
+        this.ouvrages = res.data;
+        // }
         this.dataSource = new MatTableDataSource(this.ouvrages);
       });
   }
@@ -78,7 +80,6 @@ export class DashboardComponent implements OnInit {
     this.ouvrageService.changeStatut(element)
       .subscribe(res => {
         this.getOuvrages();
-        // this.dashboardComponent.getOuvrages();
 
       });
   }
@@ -134,7 +135,7 @@ export class DashboardComponent implements OnInit {
   filterFormOuvrage($event: any) {
     this.ouvrageService.getOuvrages($event.titre, $event.auteur, $event.genre, $event.statut)
       .subscribe(res => {
-        this.ouvragesDisponible= res.data.filter(ouvrage => ouvrage.statut == 'disponible').length;
+        this.ouvragesDisponible = res.data.filter(ouvrage => ouvrage.statut == 'disponible').length;
         this.ouvragesPreter = res.data.filter(ouvrage => ouvrage.statut == 'Prêté').length;
 
         if (this.status != 'all') {

@@ -7,9 +7,11 @@ var ouvrage = require("../models/ouvrage");
 exports.create_ouvrage = (req, res, next) => {
 
     let filePath = process.env.DEFAULT_PORFIL_IMAGE;
+    console.log(filePath);
     try {
         filePath = req.file.path
     } catch (e) {}
+    console.log(filePath);
     var ouvr = new ouvrage({
         _id: mongoose.Types.ObjectId(),
         titre: req.body.titre,

@@ -1,8 +1,8 @@
 import {Component, EventEmitter, Input, Output} from '@angular/core';
-import {Ouvrage} from "../ouvrage";
-import {OuvrageService} from "../ouvrage.service";
-import {MatTableDataSource} from "@angular/material/table";
-import {DashboardComponent} from "../dashboard/dashboard.component";
+import {Ouvrage} from '../ouvrage';
+import {OuvrageService} from '../ouvrage.service';
+import {MatTableDataSource} from '@angular/material/table';
+import {DashboardComponent} from '../dashboard/dashboard.component';
 
 
 @Component({

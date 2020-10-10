@@ -13,6 +13,6 @@ export interface Ouvrage {
 export interface OuvrageRespense{
   success: boolean;
   message: string;
-  data: Ouvrage []
+  data: Ouvrage [];
 
 }

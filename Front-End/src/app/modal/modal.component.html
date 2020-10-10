@@ -19,10 +19,10 @@
           <label>: {{data.ouvrage.auteur}}</label>
         </div>
         <div class="row"> emplacement physique
-          <label>: {{data.ouvrage.emplacementP}}</label>
+          <label>: {{data.ouvrage.emplacementPhysique}}</label>
         </div>
         <div class="row"> Maison d’édition
-          <label>: {{data.ouvrage.maisonE}}</label>
+          <label>: {{data.ouvrage.maisonEdition}}</label>
         </div>
       </div>
     </div>
@@ -51,11 +51,11 @@
       </mat-form-field>
       <mat-form-field class="example-full-width">
         <mat-label>Emplacement physique</mat-label>
-        <input matInput placeholder="emplacementP" [(ngModel)]="newOuvrage.emplacementP">
+        <input matInput placeholder="emplacementPhysique" [(ngModel)]="newOuvrage.emplacementPhysique">
       </mat-form-field>
       <mat-form-field class="example-full-width">
         <mat-label>Maison d’édition</mat-label>
-        <input matInput placeholder="maisonE" [(ngModel)]="newOuvrage.maisonE">
+        <input matInput placeholder="maisonEdition" [(ngModel)]="newOuvrage.maisonEdition">
       </mat-form-field>
     </div>
     <div class="avatar-upload">
@@ -95,11 +95,11 @@
       </mat-form-field>
       <mat-form-field class="example-full-width">
         <mat-label>Emplacement physique</mat-label>
-        <input matInput placeholder="emplacementP" [(ngModel)]="data.ouvrage.emplacementP">
+        <input matInput placeholder="emplacementPhysique" [(ngModel)]="data.ouvrage.emplacementPhysique">
       </mat-form-field>
       <mat-form-field class="example-full-width">
         <mat-label>Maison d’édition</mat-label>
-        <input matInput placeholder="maisonE" [(ngModel)]="data.ouvrage.maisonE">
+        <input matInput placeholder="maisonEdition" [(ngModel)]="data.ouvrage.maisonEdition">
       </mat-form-field>
     </div>
     <div  mat-dialog-actions>

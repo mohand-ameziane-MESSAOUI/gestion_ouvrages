@@ -18,9 +18,9 @@ export class ModalComponent {
   newOuvrage: Ouvrage = {
     ISBN: "",
     auteur: "",
-    emplacementP: "",
+    emplacementPhysique: "",
     genre: "",
-    maisonE: "",
+    maisonEdition: "",
     photo: "",
     statut: "disponible",
     titre: "",

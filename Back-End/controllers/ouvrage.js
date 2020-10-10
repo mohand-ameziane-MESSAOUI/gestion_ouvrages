@@ -16,8 +16,8 @@ exports.create_ouvrage = (req, res, next) => {
         auteur: req.body.auteur,
         ISBN: req.body.ISBN,
         photo: filePath,
-        maisonE: req.body.maisonE,
-        emplacementP: req.body.emplacementP,
+        maisonEdition: req.body.maisonEdition,
+        emplacementPhysique: req.body.emplacementPhysique,
         genre: req.body.genre,
         statut: req.body.statut,
     });
@@ -30,8 +30,8 @@ exports.create_ouvrage = (req, res, next) => {
                 "titre": data.titre,
                 "auteur": data.auteur,
                 "ISBN": data.ISBN,
-                "maisonE": data.maisonE,
-                "emplacementP": data.emplacementP,
+                "maisonEdition": data.maisonEdition,
+                "emplacementPhysique": data.emplacementPhysique,
                 "genre": data.genre,
                 "statut": data.statut,
             }
@@ -117,8 +117,8 @@ exports.edit_ouvrage = async (req, res, next) => {
             ouv.titre = req.body.titre
             ouv.auteur = req.body.auteur
             ouv.ISBN = req.body.ISBN
-            ouv.maisonE = req.body.maisonE
-            ouv.emplacementP = req.body.emplacementP
+            ouv.maisonEdition = req.body.maisonEdition
+            ouv.emplacementPhysique = req.body.emplacementPhysique
             ouv.genre = req.body.genre
             ouv.statut = req.body.statut
 

@@ -4,15 +4,15 @@
     <div class="row justify-content-center mt-4">
       <div class="module mr-4" (click)="this.setList(preter)">
         <h4>Prêté(s)</h4>
-        <h4>{{this.ouvragePre}}</h4>
+        <h4>{{this.ouvragesPreter}}</h4>
       </div>
 
       <div class="module mr-4" (click)="this.setList(disponible)">
         <h4>Disponible</h4>
-        <h4>{{this.ouvrageDisp}}</h4>
+        <h4>{{this.ouvragesDisponible}}</h4>
       </div>
 
-      <div class="module " (click)="this.setList(tous)">
+      <div class="module " (click)="this.setList(all)">
         <h4>Tous</h4>
         <h4>{{this.ouvrages.length}}</h4>
       </div>
@@ -28,7 +28,6 @@
   </div>
 
 </div>
-
 
   <div class="mt-1 row">
 

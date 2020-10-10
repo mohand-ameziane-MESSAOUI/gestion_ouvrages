@@ -1,14 +1,11 @@
 {
     "env": {
-        "MONGODB_USER": "",
+        "MONGODB_USER": "mohand",
         "MONGODB_PASSWORD": "jWrBycTVQACSGEpb",
-        "MONGODB_PROTOCOL" : "mongodb",
-        "MONGODB_HOST": "localhost",
-        "MONGODB_PORT": "27017",
-        "MONGODB_DATA": "newbd",
-        "SWAGGER_BASE_URL": "localhost",
-        "SWAGGER_DOC_ROUTE": "/doc",
-        "JWT_KEY": "KEY",
+        "MONGODB_PROTOCOL" : "mongodb+srv",
+        "MONGODB_HOST": "cluster0.zfrt8.gcp.mongodb.net",
+        "MONGODB_PORT": "",
+        "MONGODB_DATA": "infoDecision?retryWrites=true&w=majority",
         "PORT": "3000",
         "DEFAULT_PORFIL_IMAGE" : "uploads/default/profil.png"
     }

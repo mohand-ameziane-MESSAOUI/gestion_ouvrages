@@ -4,8 +4,8 @@ export interface Ouvrage {
   auteur: string;
   ISBN: string;
   photo: any;
-  maisonE: string;
-  emplacementP: string;
+  maisonEdition: string;
+  emplacementPhysique: string;
   genre: string;
   statut: string;
 }

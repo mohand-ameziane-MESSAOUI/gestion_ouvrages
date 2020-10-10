@@ -6,8 +6,8 @@ const ouvrageSchema = mongoose.Schema({
     auteur: { type: String, required: true },
     ISBN: { type: String, required: true },
     photo: { type: String, required: false, default: "/uploads/default/defaultImage.png" },
-    maisonE: { type: String, required: true },
-    emplacementP: { type: String, required: true },
+    maisonEdition: { type: String, required: true },
+    emplacementPhysique: { type: String, required: true },
     genre: { type: String, required: true },
     statut: { type: String, required: true }
 

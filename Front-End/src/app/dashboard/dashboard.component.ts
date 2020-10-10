@@ -1,9 +1,9 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {Ouvrage} from "../ouvrage";
-import {OuvrageService} from "../ouvrage.service";
-import {MatTableDataSource} from "@angular/material/table";
-import {MatDialog} from "@angular/material/dialog";
-import {ModalComponent} from "../modal/modal.component";
+import {Ouvrage} from '../ouvrage';
+import {OuvrageService} from '../ouvrage.service';
+import {MatTableDataSource} from '@angular/material/table';
+import {MatDialog} from '@angular/material/dialog';
+import {ModalComponent} from '../modal/modal.component';
 
 @Component({
   selector: 'app-dashboard',
@@ -13,71 +13,68 @@ import {ModalComponent} from "../modal/modal.component";
 export class DashboardComponent implements OnInit {
 
   ouvrages: Ouvrage[] = [];
-
-  ouvrageDisp: number;
-
-  ouvragePre: number;
-
-  status: string = "tous"
-
+  ouvragesDisponible: number;
+  ouvragesPreter: number;
+  status: string = 'all';
   dataSource: MatTableDataSource<Ouvrage>;
 
   @Input()
-  preter: string = "Prêté";
+  preter: string = 'Prêté';
   @Input()
-  disponible: string = "disponible";
+  disponible: string = 'disponible';
   @Input()
-  tous: string = "tous";
+  all: string = 'all';
 
+  auteur = '';
+  genre = '';
+  statut = '';
+  titre = '';
 
-    auteur = "";
-    genre = "";
-    statut = "";
-    titre = "";
-
-
-  constructor(private ouvrageService: OuvrageService, public dialog: MatDialog) { };
+  constructor(private ouvrageService: OuvrageService, public dialog: MatDialog) {
+  };
 
   ngOnInit() {
     this.getOuvrages();
   }
 
- setList(statut: string): void {
-   this.status = statut;
-   this.getOuvrages();
-}
+  setList(statut: string): void {
+    if(statut != "all"){
+      this.statut = statut;
+    }
+    this.getOuvrages();
+  }
 
   getOuvrages(): void {
     this.ouvrageService.getOuvrages(this.titre, this.auteur, this.genre, this.statut)
       .subscribe(res => {
-        this.ouvrageDisp = res.data.filter(ouvrage => ouvrage.statut == "disponible").length;
-        this.ouvragePre = res.data.filter(ouvrage => ouvrage.statut == "Prêté").length;
+        this.ouvragesDisponible= res.data.filter(ouvrage => ouvrage.statut == 'disponible').length;
+        this.ouvragesPreter = res.data.filter(ouvrage => ouvrage.statut == 'Prêté').length;
 
-        if(this.status != "tous"){
-          this.ouvrages = res.data.filter(ouvrage => ouvrage.statut == this.status);
-        }else{
+       // if (this.status != 'all') {
+         // this.ouvrages = res.data.filter(ouvrage => ouvrage.statut == this.status);
+        //} else {
           this.ouvrages = res.data;
-        }
+        //}
         this.dataSource = new MatTableDataSource(this.ouvrages);
       });
   }
 
-  deleteOuvrage(element: Ouvrage) : void {
+  deleteOuvrage(element: Ouvrage): void {
     this.ouvrageService.deleteOuvrage(element._id)
       .subscribe(res => {
-        if(this.ouvrages.length != 1) {
+        if (this.ouvrages.length != 1) {
           this.getOuvrages();
-        }else{
+        } else {
           this.ouvrages = [];
-          this.ouvrageDisp = 0;
-          this.ouvragePre = 0;
+          this.ouvragesDisponible = 0;
+          this.ouvragesPreter = 0;
           this.dataSource = new MatTableDataSource(this.ouvrages);
         }
 
       });
   }
 
-  changeStatut(element: Ouvrage): void{
+  changeStatut(element: Ouvrage): void {
     this.ouvrageService.changeStatut(element)
       .subscribe(res => {
         this.getOuvrages();
@@ -88,13 +85,13 @@ export class DashboardComponent implements OnInit {
 
   editOuvrage(element: Ouvrage) {
 
-   const dialogRef = this.dialog.open(ModalComponent, {
+    const dialogRef = this.dialog.open(ModalComponent, {
       data: {
         ouvrage: element,
-        type: "edit"
+        type: 'edit'
       }
     });
-   dialogRef.afterClosed().subscribe(result => {
+    dialogRef.afterClosed().subscribe(result => {
       this.getOuvrages();
     });
 
@@ -104,7 +101,7 @@ export class DashboardComponent implements OnInit {
     const dialogRef = this.dialog.open(ModalComponent, {
 
       data: {
-        type: "add"
+        type: 'add'
       }
     });
 
@@ -113,12 +110,15 @@ export class DashboardComponent implements OnInit {
     });
 
   }
+
   private filterToStatut(filter: string) {
-    if(filter != "tous") {
-      console.log("this.ouvrages-list filterToStatut", this.ouvrages);
-      console.log("filterToStatut", filter);
-      this.ouvrages.filter(ouv =>{ouv.statut == filter});
-      console.log("this.ouvrages-list filterToStatut", this.ouvrages);
+    if (filter != 'all') {
+      console.log('this.ouvrages-list filterToStatut', this.ouvrages);
+      console.log('filterToStatut', filter);
+      this.ouvrages.filter(ouv => {
+        ouv.statut == filter;
+      });
+      console.log('this.ouvrages-list filterToStatut', this.ouvrages);
     }
   }
 
@@ -126,7 +126,7 @@ export class DashboardComponent implements OnInit {
     this.dialog.open(ModalComponent, {
       data: {
         ouvrage: $event,
-        type: "detail"
+        type: 'detail'
       }
     });
   }
@@ -134,12 +134,12 @@ export class DashboardComponent implements OnInit {
   filterFormOuvrage($event: any) {
     this.ouvrageService.getOuvrages($event.titre, $event.auteur, $event.genre, $event.statut)
       .subscribe(res => {
-        this.ouvrageDisp = res.data.filter(ouvrage => ouvrage.statut == "disponible").length;
-        this.ouvragePre = res.data.filter(ouvrage => ouvrage.statut == "Prêté").length;
+        this.ouvragesDisponible= res.data.filter(ouvrage => ouvrage.statut == 'disponible').length;
+        this.ouvragesPreter = res.data.filter(ouvrage => ouvrage.statut == 'Prêté').length;
 
-        if(this.status != "tous"){
+        if (this.status != 'all') {
           this.ouvrages = res.data.filter(ouvrage => ouvrage.statut == this.status);
-        }else{
+        } else {
           this.ouvrages = res.data;
         }
         this.dataSource = new MatTableDataSource(this.ouvrages);

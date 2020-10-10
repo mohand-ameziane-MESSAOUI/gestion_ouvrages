@@ -3,7 +3,11 @@
   <component name="ChangeListManager">
     <list default="true" id="578b18af-7c51-46a5-803c-76904b6ca0da" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Back-End/configurations/uploadImage.js" beforeDir="false" afterPath="$PROJECT_DIR$/Back-End/configurations/uploadImage.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Back-End/.env" beforeDir="false" afterPath="$PROJECT_DIR$/Back-End/.env" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Back-End/configurations/mognodb.js" beforeDir="false" afterPath="$PROJECT_DIR$/Back-End/configurations/mognodb.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Back-End/controllers/ouvrage.js" beforeDir="false" afterPath="$PROJECT_DIR$/Back-End/controllers/ouvrage.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Back-End/models/ouvrage.js" beforeDir="false" afterPath="$PROJECT_DIR$/Back-End/models/ouvrage.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Back-End/nodemon.json" beforeDir="false" afterPath="$PROJECT_DIR$/Back-End/nodemon.json" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -55,7 +59,7 @@
       <workItem from="1601885852058" duration="1210000" />
       <workItem from="1601921511214" duration="9061000" />
       <workItem from="1601977451833" duration="193000" />
-      <workItem from="1602151715125" duration="5117000" />
+      <workItem from="1602151715125" duration="6421000" />
     </task>
     <servers />
   </component>

@@ -18,7 +18,7 @@
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../photo-sharing-site" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/Back-End/uploads/images" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -27,6 +27,11 @@
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="ts.external.directory.path" value="C:\Users\ADBI_101\Desktop\Projet UPEC\gestion_ouvrages\Front-End\node_modules\typescript\lib" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\ADBI_101\Desktop\Projet UPEC\gestion_ouvrages\Back-End\uploads\images" />
+    </key>
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -55,7 +60,7 @@
       <workItem from="1601885852058" duration="1210000" />
       <workItem from="1601921511214" duration="9061000" />
       <workItem from="1601977451833" duration="193000" />
-      <workItem from="1602151715125" duration="8008000" />
+      <workItem from="1602151715125" duration="8152000" />
     </task>
     <servers />
   </component>

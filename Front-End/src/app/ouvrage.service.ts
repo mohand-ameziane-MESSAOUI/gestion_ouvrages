@@ -15,22 +15,22 @@ export class OuvrageService {
     headers: new HttpHeaders({'Content-Type': 'application/json'})
   };
 
-  listOuvrage: Ouvrage[];
-
-  getOuvrages(titre: string, auteur: string, genre: string, statut: string): Observable<OuvrageRespense> {
+  getOuvrages(titre: string, auteur: string, genre: string, statut: string, page?: number, limit?: number): Observable<OuvrageRespense> {
     if (titre === null) {titre = ''; }
     if (auteur === null) {auteur = ''; }
     if (genre === null) {genre = ''; }
     if (statut === null) {statut = ''; }
-    return this.http.get<OuvrageRespense>(`/api/ouvrage?titre=${titre}&genre=${genre}&auteur=${auteur}&statut=${statut}`, this.httpOptions);
+
+    return this.http.get<OuvrageRespense>(`/api/ouvrage?titre=${titre}&genre=${genre}` +
+      `&auteur=${auteur}&statut=${statut}&page=${page}&limit=${limit}`, this.httpOptions);
   }
 
-  deleteOuvrage(_id: number) {
+  deleteOuvrage(_id: string) {
     console.log('_id', _id);
     return this.http.delete<Ouvrage>(`/api/ouvrage/${_id}`);
   }
 
-  editOuvrage(element: Ouvrage) {
+  editOuvrage(element: Ouvrage){
     return this.http.put<Ouvrage>(`/api/ouvrage/${element._id}`, element);
   }
 

@@ -1,5 +1,5 @@
 export interface Ouvrage {
-  _id?: number;
+  _id?: string;
   titre: string;
   auteur: string;
   ISBN: string;
@@ -14,5 +14,11 @@ export interface OuvrageRespense{
   success: boolean;
   message: string;
   data: Ouvrage [];
+  total: number;
+  page: number;
+  page_size: number;
+  total_preter: number;
+  total_disponible: number;
+  total_ouvrages: number
 
 }

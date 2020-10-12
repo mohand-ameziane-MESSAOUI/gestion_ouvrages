@@ -1,9 +1,10 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, Input, OnInit, ViewChild} from '@angular/core';
 import {Ouvrage} from '../ouvrage';
 import {OuvrageService} from '../ouvrage.service';
 import {MatTableDataSource} from '@angular/material/table';
 import {MatDialog} from '@angular/material/dialog';
 import {ModalComponent} from '../modal/modal.component';
+import {MatPaginator, PageEvent} from '@angular/material/paginator';
 
 @Component({
   selector: 'app-dashboard',
@@ -11,6 +12,8 @@ import {ModalComponent} from '../modal/modal.component';
   styleUrls: ['./dashboard.component.css']
 })
 export class DashboardComponent implements OnInit {
+
+  @ViewChild('paginator') paginator: MatPaginator;
 
   ouvrages: Ouvrage[] = [];
   ouvragesDisponible: number;
@@ -30,33 +33,64 @@ export class DashboardComponent implements OnInit {
   statut = '';
   titre = '';
 
+  length: number;
+  pageSize = 10;
+  pageSizeOptions: number[] = [5, 10, 25, 100];
+
+  page: number = 1;
+  totalOuvrgae: number;
+
   constructor(private ouvrageService: OuvrageService, public dialog: MatDialog) {
   }
 
-  ngOnInit() {
+  ngOnInit(): void{
     this.getOuvrages();
   }
 
+  updatePageParameters(event: PageEvent): void{
+    this.page = event.pageIndex + 1;
+    this.pageSize = event.pageSize;
+  }
+
+  updatePage(event: PageEvent): void {
+    this.updatePageParameters(event);
+    this.ouvrageService.getOuvrages(this.titre, this.auteur, this.genre, this.statut, this.page, this.pageSize)
+      .subscribe(res => {
+        this.ouvragesDisponible = res.total_disponible;
+        this.ouvragesPreter = res.total_preter;
+        this.ouvrages = res.data;
+        this.length = res.total;
+        this.page = res.page;
+        this.totalOuvrgae = res.total_ouvrages;
+        this.dataSource = new MatTableDataSource(this.ouvrages);
+      });
+  }
+
+  initDefaultPage(): void{
+    this.page = 1;
+    this.paginator.pageIndex = 0;
+  }
+
+
   setList(statut: string): void {
-    if (statut == 'all'){
+    if (statut === 'all'){
       this.statut = '';
     }else{
       this.statut = statut;
     }
+    this.initDefaultPage();
     this.getOuvrages();
   }
 
   getOuvrages(): void {
-    this.ouvrageService.getOuvrages(this.titre, this.auteur, this.genre, this.statut)
+    this.ouvrageService.getOuvrages(this.titre, this.auteur, this.genre, this.statut, this.page, this.pageSize)
       .subscribe(res => {
-        this.ouvragesDisponible = res.data.filter(ouvrage => ouvrage.statut == 'disponible').length;
-        this.ouvragesPreter = res.data.filter(ouvrage => ouvrage.statut == 'Prêté').length;
-
-       // if (this.status != 'all') {
-         // this.ouvrages = res.data.filter(ouvrage => ouvrage.statut == this.status);
-        // } else {
+        this.ouvragesDisponible = res.total_disponible;
+        this.ouvragesPreter = res.total_preter;
         this.ouvrages = res.data;
-        // }
+        this.length = res.total;
+        this.page = res.page;
+        this.totalOuvrgae = res.total_ouvrages;
         this.dataSource = new MatTableDataSource(this.ouvrages);
       });
   }
@@ -64,7 +98,7 @@ export class DashboardComponent implements OnInit {
   deleteOuvrage(element: Ouvrage): void {
     this.ouvrageService.deleteOuvrage(element._id)
       .subscribe(res => {
-        if (this.ouvrages.length != 1) {
+        if (this.ouvrages.length !== 1) {
           this.getOuvrages();
         } else {
           this.ouvrages = [];
@@ -84,7 +118,7 @@ export class DashboardComponent implements OnInit {
       });
   }
 
-  editOuvrage(element: Ouvrage) {
+  editOuvrage(element: Ouvrage): void {
 
     const dialogRef = this.dialog.open(ModalComponent, {
       data: {
@@ -98,7 +132,7 @@ export class DashboardComponent implements OnInit {
 
   }
 
-  addOuvrage() {
+  addOuvrage(): void {
     const dialogRef = this.dialog.open(ModalComponent, {
 
       data: {
@@ -112,18 +146,7 @@ export class DashboardComponent implements OnInit {
 
   }
 
-  private filterToStatut(filter: string) {
-    if (filter != 'all') {
-      console.log('this.ouvrages-list filterToStatut', this.ouvrages);
-      console.log('filterToStatut', filter);
-      this.ouvrages.filter(ouv => {
-        ouv.statut == filter;
-      });
-      console.log('this.ouvrages-list filterToStatut', this.ouvrages);
-    }
-  }
-
-  detailOuvrage($event: Ouvrage) {
+  detailOuvrage($event: Ouvrage): void {
     this.dialog.open(ModalComponent, {
       data: {
         ouvrage: $event,
@@ -132,18 +155,22 @@ export class DashboardComponent implements OnInit {
     });
   }
 
-  filterFormOuvrage($event: any) {
-    this.ouvrageService.getOuvrages($event.titre, $event.auteur, $event.genre, $event.statut)
+  filterFormOuvrage($event: any): void {
+    this.initDefaultPage();
+    this.ouvrageService.getOuvrages($event.titre, $event.auteur, $event.genre, $event.statut, this.page, this.pageSize )
       .subscribe(res => {
-        this.ouvragesDisponible = res.data.filter(ouvrage => ouvrage.statut == 'disponible').length;
-        this.ouvragesPreter = res.data.filter(ouvrage => ouvrage.statut == 'Prêté').length;
+        this.length = res.total;
 
-        if (this.status != 'all') {
-          this.ouvrages = res.data.filter(ouvrage => ouvrage.statut == this.status);
+        if (this.status !== 'all') {
+          this.ouvrages = res.data.filter(ouvrage => ouvrage.statut === this.status);
         } else {
           this.ouvrages = res.data;
         }
         this.dataSource = new MatTableDataSource(this.ouvrages);
       });
+    this.titre = $event.titre;
+    this.auteur = $event.auteur;
+    this.genre = $event.genre;
+    this.statut = $event.genre;
   }
 }

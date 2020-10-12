@@ -23,11 +23,11 @@ export class OuvrageFormComponent {
     });
   }
 
-  filterOuvrages() {
+  filterOuvrages(): void {
     this.filterOuvrage.emit(this.form.value);
   }
 
-  reset() {
+  reset(): void {
     this.form.reset();
   }
 
